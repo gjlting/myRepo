@@ -1,16 +1,57 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view v-if="isRouterAlive" />
   </div>
 </template>
 
+<script>
+import { Validator } from "vee-validate";
+import openapi from "@/api/openapi.js";
+export default {
+  watch: {
+    "$i18n.locale"(val) {
+      // 切换中英文
+      Validator.localize(val);
+    }
+  },
+  data() {
+    return {
+      isRouterAlive: true,
+      roleList: []
+    };
+  },
+  provide() {
+    return {
+      reload: this.reload
+    };
+  },
+  mounted() {
+    this.getUsers()
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(() => {
+        this.isRouterAlive = true;
+        // alert('reload page')
+      });
+    },
+    getUsers() {
+      // eslint-disable-next-line no-console
+      console.log(openapi.Member)
+      this.$tools.ajax(openapi.Role,'get').then((data) => {
+        this.roleList = data.data
+      })
+    }
+  }
+};
+</script>
 <style lang="less">
+html body {
+  height: 100%;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

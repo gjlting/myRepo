@@ -1,11 +1,13 @@
 <template>
-  <div class="home">{{$t('home')}}</div>
+  <div class="template">
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
+
 export default {
-  name: "Home",
+  name: "Template",
   data() {
     return {};
   }
