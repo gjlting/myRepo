@@ -21,9 +21,17 @@ Vue.use(VeeValidate, {
   } 
 })
 Validator.localize(localStorage.getItem('locale'))
+import   './validate.js'
 
 import DataViewSidebar  from './components/DataViewSidebar'
 Vue.component(DataViewSidebar.name, DataViewSidebar)
+
+import FeatherIcon  from './components/FeatherIcon.vue'
+Vue.component(FeatherIcon.name, FeatherIcon)
+
+import vSelect from 'vue-select'
+
+Vue.component('v-select', vSelect)
 
 // 封装toast组件
 import toastRegistry from './toast'
@@ -45,6 +53,9 @@ Vue.use(vuesax)
 
 // import test from './components/test'
 // Vue.use(test)
+
+// Styles: SCSS
+import './assets/scss/main.scss'
 
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false

@@ -3,10 +3,12 @@
     <input style="display:none" type="file" ref="fileInput" accept=".xlsx, .xls, .csv" @change="importData($event)" />
     <span @click.stop="importOpen()">导入</span>
     <!-- <div :active.sync="bulk.show"> -->
-    <div v-if="bulk.show">
-      <a :href="href" dowmload="template.xlsx">下载模板</a>
-      <a @click="uploadHardware()">上传</a>
+      <vs-popup class="holamundo"  title="导入" :active.sync="bulk.show">
+      <div v-if="bulk.show">
+        <a :href="href" dowmload="template.xlsx">下载模板</a>
+        <a @click="uploadHardware()">上传</a>
     </div>
+    </vs-popup>
     <ul>
       <li v-for="(item,key) in bulk.hardware" :key="key">
         <span>品牌：{{item.brand}}</span>

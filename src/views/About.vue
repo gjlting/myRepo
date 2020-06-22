@@ -162,10 +162,21 @@ export default {
 };
 </script>
 <style lang="scss">
+input[type="search"]{
+  -webkit-appearance:none;
+  } 
+
+input::-webkit-search-cancel-button {display: none;}
 .vs-input--icon {
   top: 5px;
 }
+.vs__clear {
+  display: none;
+}
 .halo-tree {
+  .tree-node-el {
+    background-color: inherit;
+  }
   li {
     position: relative;
     padding-right: 0;
