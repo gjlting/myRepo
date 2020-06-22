@@ -19,11 +19,12 @@
           <div v-for="(item, index) in newIndex.children" :key="index" class="item">
             <div class="container">
               <vs-input v-model="item.label" :placeholder="inputName" class="label"></vs-input>
-              <span @click.stop="appendChild(item.children[index], {label:'', inputType:'Value',range:{min:'',max:''},children:[]})">
+              <span @click.stop="appendChild(newIndex.children[index], {label:'', inputType:'Value',range:{min:'',max:''}})">
               <feather-icon icon="PlusIcon" svg-classes="w-5 h-5" />
             </span>
             </div>
             <v-select
+              v-if="item.inputType"
               v-model="item.inputType"
               label="label"
               class="select"
@@ -43,7 +44,7 @@
               <span>{{errors.first('max')}}</span>
             </div>
             <div class="child" v-if="hasChildren(item.children)">
-              <div v-for="(child, ind) in item.child" :key="ind" class="item">
+              <div v-for="(child, ind) in item.children" :key="ind" class="item">
                 <div class="container">
                   <vs-input v-model="child.label" :placeholder="inputName" class="label"></vs-input>
                   <!-- <span @click.stop="appendChild(child.children[index], {label:'', inputType:'Value',range:{min:'',max:''},children:[]})">
@@ -143,9 +144,23 @@ export default {
         this.data.children[this.currentIndex] = this.newIndex;
       }
     },
-    appendChild(object, item) {
-      delete object.inputType;
-      object.children = [...object.children, item];
+    Obj(){
+      let obj = {
+        label: '',
+        inputType: 'Value',
+        range: {
+          min: '',
+          max: ''
+        },
+        children: []
+      }
+      return obj
+    },
+    appendChild(object) {
+      delete object.inputType
+      let item = new this.Obj()
+      object.children = [...object.children, item]
+      console.log(this.newIndex)
     }
   }
 };
