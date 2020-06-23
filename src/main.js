@@ -10,6 +10,16 @@ import 'material-icons/iconfont/material-icons.css' //Material Icons
 // i18n
 import i18n from './i18n/i18n'
 
+// highcharts
+import Highchart from 'highcharts/highcharts'
+import stockInit from 'highcharts/modules/stock'
+import HighchartsVue from 'highcharts-vue'
+import highchatsMore from 'highcharts/highcharts-more'
+stockInit(Highchart)
+highchatsMore(Highchart)
+Vue.use(HighchartsVue)
+
+
 // VeeValidate
 import VeeValidate, { Validator } from 'vee-validate'
 import zh_CN from 'vee-validate/dist/locale/zh_CN'
@@ -59,6 +69,18 @@ import './assets/scss/main.scss'
 
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
+
+router.beforeEach((to, from, next) => {
+  document.title = i18n.t(to.meta.title)
+  next()
+})
+
+//定义全局过滤器
+import * as filters from './filter.js'; // global filters
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key]);
+});
 
 new Vue({
   i18n,

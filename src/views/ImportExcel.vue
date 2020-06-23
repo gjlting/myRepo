@@ -47,8 +47,7 @@
 
 <script>
 // @ is an alias to /src
-import XLSX from "xlsx";
-import Toast from "@/toast/Toast";
+import XLSX from "xlsx"
 // import assetapi from '@/api/assetapi.js';
 export default {
   name: "ImportExcel",
@@ -66,8 +65,6 @@ export default {
     };
   },
   components: {
-    // eslint-disable-next-line vue/no-unused-components
-    Toast
   },
   mounted() {
     this.$toast("hello world");

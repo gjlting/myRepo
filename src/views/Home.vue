@@ -87,6 +87,7 @@
           <span class="line">-</span>
           <vs-input
             type="number"
+            class="label"
             v-model="newIndex.range.max"
             name="max"
             v-validate="{'required':true,'compareNum':newIndex.range.min}"

@@ -9,5 +9,9 @@ export default [{
 {
   path: '/importExcel',
   pathname: 'importExcel',
+},
+{
+  path: '/overview',
+  pathname: 'overview',
 }
 ]

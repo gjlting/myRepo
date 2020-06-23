@@ -44,6 +44,14 @@ export default new Router({
             title: 'importExcel'
           }
         },
+        {
+          path: '/overview',
+          name: 'overview',
+          component: () => import('./views/Overview.vue'),
+          meta: {
+            title: 'overview'
+          }
+        },
       ]
     }
   ]

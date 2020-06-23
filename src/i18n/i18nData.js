@@ -11,7 +11,8 @@ export default {
     status: 'Status',
     value: 'Value',
     min: 'Min',
-    max: 'Max'
+    max: 'Max',
+    overview: 'Overview',
   },
   zh: {
     switchLanguage: '切换语言',
@@ -25,6 +26,7 @@ export default {
     status: '状态',
     value: '数值',
     min: '最小',
-    max: '最大'
+    max: '最大',
+    overview: '总览',
   }
 }
