@@ -306,7 +306,6 @@ export default {
           const workbook = XLSX.read(data, {
             type: "array"
           });
-          // eslint-disable-next-line no-console
           console.log(workbook);
           const firstSheetName = workbook.SheetNames[0];
           const worksheet = workbook.Sheets[firstSheetName];
