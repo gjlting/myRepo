@@ -81,6 +81,7 @@ import * as filters from './filter.js'; // global filters
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
+import _ from 'loadash'
 
 new Vue({
   i18n,

@@ -66,4 +66,19 @@ html body {
     }
   }
 }
+.dynamic-image-editor{
+  height: 100px;
+  margin: 20px;
+}
+.dynamic-image-editor .ql-container{
+    border-radius: 5px;
+    border-top: 1px solid #ccc !important;
+  }
+.dynamic-image-editor  .ql-editor {
+    min-height: 50px;
+    border-radius: 3px;
+  }
+.quillWrapper .ql-snow.ql-toolbar {
+    display: none;
+  }
 </style>

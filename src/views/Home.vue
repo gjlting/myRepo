@@ -131,11 +131,10 @@
       </template>
 
       <template slot-scope="{data}">
-        <vs-tr :key="indextr" v-for="(tr, indextr) in data" >
+        <vs-tr :key="indextr" :data="tr" v-for="(tr, indextr) in data" >
           <vs-td :data="data[indextr].email">
             {{data[indextr].email}}
           </vs-td>
-
           <vs-td :data="data[indextr].username">
             {{data[indextr].username}}
           </vs-td>
@@ -150,6 +149,55 @@
         </vs-tr>
       </template>
     </vs-table>
+    <vs-table
+      multiple
+      v-model="selected"
+      max-items="3"
+      pagination
+      :hoverFlat='true'
+      :data="users">
+      <template slot="header">
+        <h3>
+          Users
+        </h3>
+      </template>
+      <template slot="thead">
+        <vs-th>
+          Email
+        </vs-th>
+        <vs-th>
+          Name
+        </vs-th>
+        <vs-th>
+          Website
+        </vs-th>
+        <vs-th>
+          Nro
+        </vs-th>
+      </template>
+
+      <template slot-scope="{data}">
+        <!-- 需要加:data属性，否则选择不到对应数据项 -->
+        <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data" > 
+          <vs-td :data="data[indextr].email">
+            {{data[indextr].email}}
+          </vs-td>
+
+          <vs-td :data="data[indextr].username">
+            {{data[indextr].username}}
+          </vs-td>
+
+          <vs-td :data="data[indextr].website">
+            {{data[indextr].id}}
+          </vs-td>
+
+          <vs-td :data="data[indextr].id">
+            {{data[indextr].id}}
+          </vs-td>
+        </vs-tr>
+      </template>
+    </vs-table>
+    <pre>{{ selected }}</pre>
   </div>
 </template>
 
@@ -159,6 +207,7 @@ export default {
   name: "Home",
   data() {
     return {
+      selected: [],
       descriptionItems: [3,5,15],
       add: "添加",
       inputName: "请输入名称",

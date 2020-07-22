@@ -13,6 +13,8 @@ export default {
     min: 'Min',
     max: 'Max',
     overview: 'Overview',
+    export: 'Export',
+    pasteCopyImg: 'PasteCopyImg',
   },
   zh: {
     switchLanguage: '切换语言',
@@ -28,5 +30,7 @@ export default {
     min: '最小',
     max: '最大',
     overview: '总览',
+    export: '导出',
+    pasteCopyImg: '粘贴图片'
   }
 }

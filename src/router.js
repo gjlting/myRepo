@@ -52,6 +52,14 @@ export default new Router({
             title: 'overview'
           }
         },
+        {
+          path: '/pasteCopyImg',
+          name: 'pasteCopyImg',
+          component: () => import('./views/PasteCopyImg.vue'),
+          meta: {
+            title: 'pasteCopyImg'
+          }
+        },
       ]
     }
   ]

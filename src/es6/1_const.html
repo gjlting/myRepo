@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<p>const不能改变值的实质是：不能改变变量指向的地址</p>
+  <script>
+
+// const基本数据类型
+    Object.defineProperty(window, 'es', {
+      value: 'es6',
+      writable: false
+    })
+    // console.log(es)
+
+    // const不允许重复声明
+    // const一声明就必须赋值
+    // const不属于顶层对象window
+    var str = 'es6'
+    console.log(window.str) // es6
+    const es = 'es'
+    console.log(window.es) // undefined
+
+    // 不会变量提升
+    console.log(str1) // qwe
+    var str1 = 'qwe'
+
+    // console.log(str2) // undefined
+    const str2 = 'we' 
+
+    // 暂时性死区
+    if(true) {
+      // console.log(myStr) // undefined
+      const myStr = 'str' // 在声明之前会形成暂时性死区
+    }
+    // console.log(myStr) // 块级作用域
+
+// const引用数据类型
+    const obj = {
+      name: 'lucky',
+      age: '18'
+    }
+    obj.age = 16
+    console.log(obj)
+
+    const arr = ['a', 'b', 'c']
+    Object.freeze(arr) // 冻结对象不允许改变
+    arr[0] = 'q'
+    console.log(arr) 
+
+    const myObj = {
+      name: 'we',
+      extension: ['w', 'e', 'v']
+    }
+    Object.freeze(myObj)
+    myObj.extension[0] = 'd'
+    console.log(myObj.extension[0]) // d
+
+    function myFreeze(obj) {
+      Object.freeze(obj)
+      Object.keys(obj).forEach(function(key){
+        if(typeof obj[key] === 'object') {
+          myFreeze(obj[key])
+        }
+      })
+    }
+  </script>
+</body>
+</html>

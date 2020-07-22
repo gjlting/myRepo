@@ -13,5 +13,9 @@ export default [{
 {
   path: '/overview',
   pathname: 'overview',
+},
+{
+  path: '/pasteCopyImg',
+  pathname: 'pasteCopyImg',
 }
 ]
